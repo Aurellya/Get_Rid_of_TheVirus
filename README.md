@@ -21,5 +21,5 @@ For the background music beat, I produced it using Garageband.
 - Make sure you fulfil the requirements above ^^^
 - Run 'python3 getRidOfVirus.py' on your cmd or terminal
 
-## Preview (x2)
+## Preview (x2 speed)
 ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/58356073/85097150-36bd4b80-b229-11ea-94a9-3e010a9ec82b.gif)
