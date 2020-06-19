@@ -8,6 +8,7 @@ For the background music beat, I produced it using Garageband.
 - The Virus can come from top, bottom, right or left randomly
 - Only one virus can appear at the time
 - The speed of the virus will increase 0.05 as the score increase
+- You can view your current score at top left corner of the window
 
 ## Requirements
 - Python 3.X <br/>
