@@ -10,13 +10,8 @@ pygame.init()
 # setting up FPS
 FPS = 60
 FramePerSec = pygame.time.Clock()
- 
-# creating colors
-RED   = (245, 46, 46)
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
 
-# other variables for use in the program
+# initialize variables
 DISPLAY_WIDTH = 600
 DISPLAY_HEIGHT = 500 
 SPEED = 5
@@ -25,20 +20,30 @@ SCORE = 0
 TEMP = 0
 RANDINT = 0
 
+# creating colors
+RED   = (245, 46, 46)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+
 # setting up fonts
 font = pygame.font.SysFont("impactttf", 50)
 font_small = pygame.font.SysFont("Verdana", 20)
 game_over = font.render("Game Over" , True, RED)
 
+# setting up background
 background = pygame.image.load("media/background.jpg")
 background = pygame.transform.scale(background, (DISPLAY_WIDTH,DISPLAY_HEIGHT))
+
+# define sound effect and music
+bg_sound = pygame.mixer.Sound('media/background.wav')
+bg_sound2 = pygame.mixer.Sound('media/background2.wav')
+cry = pygame.mixer.Sound('media/cry.wav')
  
 # create a white screen 
 DISPLAYSURF = pygame.display.set_mode((DISPLAY_WIDTH,DISPLAY_HEIGHT))
 DISPLAYSURF.fill(WHITE)
 pygame.display.set_caption("Get Rid of The Virus!")
  
-
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
     	super().__init__() 
@@ -47,6 +52,11 @@ class Enemy(pygame.sprite.Sprite):
     	self.surf = pygame.Surface((70, 70))
     	self.rect = self.surf.get_rect(center = (random.randint(40, DISPLAY_WIDTH-40), 0))
     
+    # 0: top to bottom (move 1)
+    # 1: bottom to top (move 2)
+    # 2: left to right (move 3)
+    # 3: right to left (move 4)
+
     def move1(self):
         global SCORE
         self.rect.move_ip(0, SPEED)
@@ -74,14 +84,8 @@ class Enemy(pygame.sprite.Sprite):
 
         if self.rect.right < (-100):
             SCORE += 1
-            
+
     def move(self):
-
-        # 0: top to bottom (move 1)
-        # 1: bottom to top (move 2)
-        # 2: left to right (move 3)
-        # 3: right to left (move 4)
-
         def generateRandInt():
             global RANDINT
             RANDINT = random.randint(0,2)
@@ -150,6 +154,7 @@ class Player(pygame.sprite.Sprite):
 
 
 def gameover_screen():
+    # play backround music	
     bg_sound2.play()
 
     while True:
@@ -189,16 +194,12 @@ all_sprites.add(E1)
 INC_SPEED = pygame.USEREVENT + 1
 pygame.time.set_timer(INC_SPEED, 1000)
 
-# define sound effect and music
-bg_sound = pygame.mixer.Sound('media/background.wav')
-bg_sound2 = pygame.mixer.Sound('media/background2.wav')
-cry = pygame.mixer.Sound('media/cry.wav')
-
+# play background music
 bg_sound.play()
 
 # game loop 
 while True:     
-	# cycles through all events occuring
+    # cycles through all events occuring
     for event in pygame.event.get():   
     	if ((event.type == INC_SPEED) and (SPEED < 10)):
     		SPEED += 0.05      
@@ -220,11 +221,11 @@ while True:
         DISPLAYSURF.blit(entity.image, entity.rect)
         entity.move()
 
-	# to be run if collision occurs between Player and Enemy
+    # to be run if collision occurs between Player and Virus
     if pygame.sprite.spritecollideany(P1, enemies):
-
+		
         message = font.render("Your Score: " + str(SCORE) , True, RED)
-
+	
         cry.play()
         time.sleep(1)
         bg_sound.stop()
