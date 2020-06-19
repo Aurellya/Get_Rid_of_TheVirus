@@ -1,8 +1,8 @@
-# Get Rid of TheVirus
+# Get Rid of The Virus
 This game is created using pygame. The task of this game is to help JACK-JACK PARR get rid of the virus. 
 Jack-jack Parr is the youngest son of Bob and Helen Parr, as well as the younger brother of Violet and Dash. 
 He is a supporting character in The Incredibles and a major character in Incredibles 2. 
-For the background music beat, I produced it using garageband.
+For the background music beat, I produced it using Garageband.
 
 ## Info
 - The Virus can come from top, bottom, right or left randomly
