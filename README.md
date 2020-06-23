@@ -13,7 +13,7 @@ For the background music beat, I produced it using Garageband.
 ## Requirements
 - Python 3.X <br/>
   https://www.python.org/downloads/
-- Pygame <br/>  
+- Pygame 2 (Must use pygame 2!)  
   <p>pip install pygame==2.0.0.dev2</p>
 
 ## How to Access
