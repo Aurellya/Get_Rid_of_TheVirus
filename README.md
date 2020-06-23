@@ -14,8 +14,7 @@ For the background music beat, I produced it using Garageband.
 - Python 3.X <br/>
   https://www.python.org/downloads/
 - Pygame <br/>  
-  <p>Windows:<br/>> py -m pip install -U pygame --user</p>
-  <p>Mac:<br/>> python3 -m pip install -U pygame --user</p>
+  <p>pip install pygame==2.0.0.dev2</p>
 
 ## How to Access
 - Download this repo
